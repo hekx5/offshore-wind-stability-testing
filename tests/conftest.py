@@ -5,7 +5,6 @@ import numpy as np
 @pytest.fixture
 def sample_stable_case():
     """稳定的测试用例：频响曲线不包围 -1 点"""
-    # 构造一个稳定的频响（实部大于 -1 且不环绕）
     real = np.array([-0.2, 0.1, 0.5, 0.3, -0.1])
     imag = np.array([0.1, -0.2, 0.3, -0.1, 0.0])
     return real, imag
@@ -13,7 +12,6 @@ def sample_stable_case():
 @pytest.fixture
 def sample_unstable_case():
     """不稳定的测试用例：频响曲线包围 -1 点"""
-    # 构造一个不稳定的频响（跨越 -1 左侧）
     real = np.array([-2.0, -1.5, 1.0, 1.5, -1.8])
     imag = np.array([0.5, -0.5, 0.2, -0.2, 0.6])
     return real, imag

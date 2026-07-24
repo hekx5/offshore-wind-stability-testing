@@ -3,12 +3,9 @@ from sklearn.ensemble import RandomForestClassifier
 
 def train_lightweight_model(data: pd.DataFrame, epochs=1):
     """
-    TODO: 替换为你的神经网络（如PMGM）或复杂训练逻辑
-    当前使用极简 sklearn 随机森林，保证测试可跑
+    TODO: 暂时替换为极简 sklearn 随机森林，原项目使用PMGM
     """
-    # 假设数据包含 'U', 'I', 'label' 三列
     if 'label' not in data.columns:
-        # 如果没有标签，生成随机标签
         data['label'] = [0] * len(data)
     
     X = data[['U', 'I']].values

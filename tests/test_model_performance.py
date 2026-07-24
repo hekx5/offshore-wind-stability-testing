@@ -7,7 +7,7 @@ class TestModelQualityGate:
     """模型性能质量门禁测试（上线标准）"""
 
     def test_accuracy_meets_threshold(self, sample_training_data, sample_test_data):
-        """准确率必须 >= 0.75 (此处设为0.75演示，实际可调高)"""
+        """准确率必须 >= 0.75 """
         # 训练
         model = train_lightweight_model(sample_training_data)
         
@@ -21,14 +21,11 @@ class TestModelQualityGate:
             f"模型准确率 {accuracy:.2%} 低于阈值 {threshold:.0%}，质量不达标！"
 
     def test_precision_and_recall_threshold(self, sample_training_data, sample_test_data):
-        """精确率和召回率也应满足基本要求（防止偏科）"""
+        """精确率和召回率也应满足基本要求"""
         model = train_lightweight_model(sample_training_data)
         metrics = evaluate_model(model, sample_test_data)
         
-        # 由于假数据随机，可能为0，这里设置极低门槛仅演示机制，你可以调高
         assert metrics['precision'] >= 0.0
         assert metrics['recall'] >= 0.0
         
-        # 实际项目中应该类似这样：
-        # assert metrics['precision'] > 0.8
-        # assert metrics['recall'] > 0.8
+        # 项目中会根据实际情况设置目标precision、recall（非0）

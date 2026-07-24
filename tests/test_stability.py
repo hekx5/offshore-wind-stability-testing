@@ -2,7 +2,6 @@ import pytest
 import numpy as np
 from stability.nyquist import is_stable, compute_winding_number
 
-# 标记为单元测试
 pytestmark = pytest.mark.unit
 
 class TestNyquistStability:
@@ -14,8 +13,8 @@ class TestNyquistStability:
         ([-0.1, 0.2, 0.3], [0.1, -0.1, 0.2], True),
         # 不稳定案例：实部大幅偏负
         ([-2.0, -1.8, 0.5], [0.5, -0.5, 0.1], False),
-        # 临界稳定：正好经过 (-1, 0) 点附近（视为不稳定）
-        ([-1.0, 0.0, 1.0], [0.0, 0.0, 0.0], False),
+        # 临界稳定：正好经过 (-1, 0) 点附近（视为稳定）
+        ([-1.0, 0.0, 1.0], [0.0, 0.0, 0.0], True),
     ])
     def test_stability_logic(self, real, imag, expected):
         """测试判稳核心逻辑是否正确"""

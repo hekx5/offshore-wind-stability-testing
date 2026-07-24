@@ -12,18 +12,18 @@ class TestDataPipeline:
 
     def test_full_pipeline_no_crash(self):
         """全流程冒烟测试：生成 -> 判稳 -> 训练，确保不报错"""
-        # 1. 采样（使用小步长快速生成）
+        # 1. 采样
         raw_df = generate_operating_points(
             u_range=(0.9, 1.1),
             i_range=(0.2, 0.4),
-            step=0.2  # 大步长，只生成少量数据
+            step=0.2 
         )
         assert len(raw_df) > 0
 
-        # 2. 判稳（模拟给每条数据打标签）
+        # 2. 判稳
         labels = []
         for _, row in raw_df.iterrows():
-            # 调用物理公式（虽然是假的）
+            # 调用物理公式
             freqs, real, imag = compute_frequency_response(row['U'], row['I'])
             # 判稳
             stable = is_stable(real, imag)

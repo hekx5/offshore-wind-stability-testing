@@ -3,8 +3,7 @@ import pandas as pd
 
 def generate_operating_points(u_range=(0.8, 1.2), i_range=(0.0, 1.0), step=0.1):
     """
-    TODO: 请在此处替换为真实的电压电流采样逻辑
-    当前为假数据：生成简单的网格点
+    TODO: 当前为假数据，仅生成简单的网格点
     """
     u_vals = np.arange(u_range[0], u_range[1] + step, step)
     i_vals = np.arange(i_range[0], i_range[1] + step, step)
