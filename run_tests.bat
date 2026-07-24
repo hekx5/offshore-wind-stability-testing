@@ -1,0 +1,6 @@
+@echo off
+echo 🧪 开始运行风电稳定性预测系统自动化测试...
+echo 📊 生成覆盖率报告...
+pytest tests/ --cov=physics --cov=stability --cov=model --cov-report=term --cov-report=html
+echo ✅ 测试完成！HTML报告已生成在 htmlcov/index.html
+pause
