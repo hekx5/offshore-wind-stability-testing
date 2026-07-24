@@ -1,4 +1,5 @@
 import pytest
+import numpy as np
 from physics.sampler import generate_operating_points
 from physics.formulas import compute_frequency_response
 from stability.nyquist import is_stable
